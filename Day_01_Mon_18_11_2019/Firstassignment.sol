@@ -1,4 +1,4 @@
-pragma solidity 0.5.1;
+pragma solidity 0.5.12;
 
 contract PeopleAdd {
     uint256 public peopleCount = 0;
