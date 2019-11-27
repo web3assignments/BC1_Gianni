@@ -1,0 +1,31 @@
+<body>
+Get latest Ethereum transactions<br>
+Compare to <a href="https://etherscan.io/blocks" target="_blank">Etherscan</a>
+</br>Huidge aantal transacties
+<p id="trans">
+<pre id="log" style="width:100%;height:200px"></pre>
+<script type="text/javascript" nonce="532727062d43431d8991d9cf49f" src="//local.adguard.org?ts=1574669107235&amp;name=AdGuard%20Assistant&amp;name=AdGuard%20Extra&amp;type=user-script"></script>
+<script>
+Transacries();
+var transactie;
+async function Transacries() {
+    const request=JSON.stringify({"jsonrpc":"2.0","id": 67,
+            "method": "eth_getBlockTransactionCountByNumber",
+            "params": ["latest"]
+        }
+    );
+    const rawResponse = await fetch('https://mainnet.infura.io',{method: 'POST',
+        headers: {'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        },
+        body: request
+    });
+    const content = await rawResponse.json();
+    log(`${parseInt(content.result)}`);
+}
+
+function log(transactie) {
+    document.getElementById("trans").innerHTML = transactie;
+}
+</script>
+</body>
