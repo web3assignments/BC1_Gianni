@@ -95,7 +95,6 @@
                 async function add(){
                     var toevoegen = await ContractPeopleAdd.methods.addPerson(userFirstname, userLastname).send({from:user, gas: 200000});
                 };
-                add();
                 </script>
 <body>
 
@@ -103,10 +102,10 @@
 <p>Please fill in your first and lastname!</p>
 
 First name:<br>
-<input userFirstname="">
+<input userFirstname>
 <br>
 Last name:<br>
-<input userLastname="">
+<input userLastname>
 <br><br>
 <button onclick="add()">Click Me!</button>
 
