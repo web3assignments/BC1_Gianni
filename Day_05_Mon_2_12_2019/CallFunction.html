@@ -92,7 +92,7 @@
                 const PeopleAddAddress = "0x9F6911475448C50edd4D278b54bb24B9519C3A95";
                 const ContractPeopleAdd = new web3.eth.Contract(PeopleAddABI, PeopleAddAddress);
 
-                function add(){
+                async function add(){
                     var toevoegen = await ContractPeopleAdd.methods.addPerson(userFirstname, userLastname).send({from:user, gas: 200000});
                 };
                 add();
