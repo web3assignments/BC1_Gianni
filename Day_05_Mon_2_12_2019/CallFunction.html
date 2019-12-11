@@ -3,11 +3,7 @@
         <script>
                 const Web3 = require ('web3');
                 const web3 = new Web3 ('https://ropsten.infura.io');
-                var user = web3.eth.getAccounts();
-                web3.eth.accounts.wallet.add(privateKey);
-                var userLastname = Text;
-                var userFirstname = Text;
-            
+                var user = web3.eth.getAccounts();          
             
                 const PeopleAddABI = [{
                     "constant": false,
@@ -88,12 +84,19 @@
                     "stateMutability": "view",
                     "type": "function"
                 }];
+
+                function EtherscanLink(pref,link) {
+                      return '<a href="https://ropsten.etherscan.io/'+pref+"/"+link+'" target="_blank" >'+link+'</a>';           
+                }
             
                 const PeopleAddAddress = "0x9F6911475448C50edd4D278b54bb24B9519C3A95";
                 const ContractPeopleAdd = new web3.eth.Contract(PeopleAddABI, PeopleAddAddress);
 
                 async function add(){
-                    var toevoegen = await ContractPeopleAdd.methods.addPerson(userFirstname, userLastname).send({from:user, gas: 200000});
+                    var userFirstname = document.getElementById("first").string;
+                    var userLastname = document.getElementById("last").string;
+                    var gasprice = await web3.eth.getGasPrice() 
+                    var toevoegen = await ContractPeopleAdd.methods.addPerson(userFirstname, userLastname).send({from:user, gasprice});
                 };
                 </script>
 <body>
@@ -102,12 +105,12 @@
 <p>Please fill in your first and lastname!</p>
 
 First name:<br>
-<input userFirstname>
+<input type="text" name="first" id="first">
 <br>
 Last name:<br>
-<input userLastname>
+<input type="text" name="last" id="last">
 <br><br>
-<button onclick="add()">Click Me!</button>
+<button onclick="add()">Click to add</button>
 
 <p>Also note that the default width of a text field is 20 characters.</p>
 
