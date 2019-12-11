@@ -94,8 +94,8 @@
 
                 async function add(){
                     document.getElementById("voegtoe").style.display = "none";
-                    var userFirstname = document.getElementById("first").string;
-                    var userLastname = document.getElementById("last").string;
+                    var userFirstname = document.getElementById("first").value;
+                    var userLastname = document.getElementById("last").value;
                     var gasprice = await web3.eth.getGasPrice() 
                     var toevoegen = await ContractPeopleAdd.methods.addPerson(userFirstname, userLastname).send({from:user, gasprice});
                     document.getElementById("voegtoe").style.display = "block";
