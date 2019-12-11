@@ -1,5 +1,8 @@
 const Web3 = require ('web3');
 const web3 = new Web3 ('https://ropsten.infura.io');
+const account = "0x550121a88db1207B3cE124B5962f95bcFeEa55A7";
+const privateKey = '0xDB057064C73BA95CC57B7444CF23139A3442FD4770414C11617958785DC41607';
+web3.eth.accounts.wallet.add(privateKey);
 
 const PeopleAddABI = [{
 		"constant": false,
@@ -89,3 +92,7 @@ const PeopleAddABI = [{
         console.log(result);
     }
     f();
+    async function add(){
+        var toevoegen = await ContractPeopleAdd.methods.addPerson("Naam", "Achternaam").send({from:account, gas: 200000});
+    };
+    add();
