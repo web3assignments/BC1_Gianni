@@ -93,10 +93,12 @@
                 const ContractPeopleAdd = new web3.eth.Contract(PeopleAddABI, PeopleAddAddress);
 
                 async function add(){
+                    document.getElementById("voegtoe").style.display = "none";
                     var userFirstname = document.getElementById("first").string;
                     var userLastname = document.getElementById("last").string;
                     var gasprice = await web3.eth.getGasPrice() 
                     var toevoegen = await ContractPeopleAdd.methods.addPerson(userFirstname, userLastname).send({from:user, gasprice});
+                    document.getElementById("voegtoe").style.display = "block";
                 };
                 </script>
 <body>
@@ -110,7 +112,7 @@ First name:<br>
 Last name:<br>
 <input type="text" name="last" id="last">
 <br><br>
-<button onclick="add()">Click to add</button>
+<button onclick="add()" id="voegtoe">Click to add</button>
 
 <p>Also note that the default width of a text field is 20 characters.</p>
 
