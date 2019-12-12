@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html>
-        <script>
-                const Web3 = require ('web3');
-                const web3 = new Web3 ('https://ropsten.infura.io');
-                var user = web3.eth.getAccounts();          
+    <head>
+            <script src="web3-browserify.js"></script>
+    </head>
+                
+        <script="text/javascript">
+            function log(logstr) {   
+                document.getElementById("log").innerHTML +=logstr+"\n";
+            }
+                web3 = new Web3(Web3.givenProvider);
+                log(`Version of web3.js: ${web3.version}`);
+                var user=await web3.eth.getAccounts().catch(log);
+                log(`Here are the accounts: ${JSON.stringify(user)}`);
             
                 const PeopleAddABI = [{
                     "constant": false,
@@ -93,12 +101,10 @@
                 const ContractPeopleAdd = new web3.eth.Contract(PeopleAddABI, PeopleAddAddress);
 
                 async function add(){
-                    document.getElementById("voegtoe").style.display = "none";
-                    var userFirstname = document.getElementById("first").value;
-                    var userLastname = document.getElementById("last").value;
-                    var gasprice = await web3.eth.getGasPrice() 
-                    var toevoegen = await ContractPeopleAdd.methods.addPerson(userFirstname, userLastname).send({from:user, gasprice});
-                    document.getElementById("voegtoe").style.display = "block";
+                    var userFirstname = "first";
+                    var userLastname = "last";
+                    var toevoegen = await ContractPeopleAdd.methods.addPerson(userFirstname, userLastname).send({from:user, gas:2000000});
+                    log(`Stored in block ${toevoegen.blockNumber}`)
                 };
                 </script>
 <body>
