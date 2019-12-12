@@ -107,7 +107,7 @@
             async function add(){
                 let userFirstname = "first";
                 let userLastname = "last";
-                var toevoegen = await ContractPeopleAdd.methods.addPerson(userFirstname, userLastname).send({from:user, gas:2000000});
+                var toevoegen = await ContractPeopleAdd.methods.addPerson("userFirstname", "userLastname").send({from:user, gas:2000000});
                 log(`Stored in block ${toevoegen.blockNumber}`)
             };
             </script>
