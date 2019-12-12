@@ -107,7 +107,7 @@
             async function add(){
                 let userFirstname = "first";
                 let userLastname = "last";
-                var toevoegen = await ContractPeopleAdd.methods.addPerson("userFirstname", "userLastname").send({from:user, gas:2000000});
+                var toevoegen = await ContractPeopleAdd.methods.addPerson("userFirstname", "userLastname").sendTransaction({from:user, gas:2000000});
                 log(`Stored in block ${toevoegen.blockNumber}`)
             };
             </script>
@@ -115,7 +115,7 @@
 First name:<br>
 <input type="text" id="first">
 <br>
-Last name:<br>
+Last na:<br>
 <input type="text" id="last">
 <br><br>
 <button onclick="add()">Click to add</button>
