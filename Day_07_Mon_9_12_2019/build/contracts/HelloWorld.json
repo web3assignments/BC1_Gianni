@@ -1,0 +1,222 @@
+{
+  "contractName": "HelloWorld",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "welcome",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"welcome\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/giannibhoendie/Documents/GitHub/BC1_Gianni/Day_07_Mon_9_12_2019/contracts/HelloWorld.sol\":\"HelloWorld\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/giannibhoendie/Documents/GitHub/BC1_Gianni/Day_07_Mon_9_12_2019/contracts/HelloWorld.sol\":{\"keccak256\":\"0xd1c9a3b0309588d6c5ee31bb093033aa8904fc9634221ec726f8dcaf2e49f73e\",\"urls\":[\"bzz-raw://0fff72d92270f36d1a4d6261d4a47be5e35e44c7bace563f73093ac3ebb20f6e\",\"dweb:/ipfs/QmZUJaUmYLB7nPHk7XeBoYyhAkTTWura9KPzh7pXwwgCW4\"]}},\"version\":1}",
+  "bytecode": "0x60806040526040518060400160405280600c81526020017f68656c6c6f20576f726c642100000000000000000000000000000000000000008152506000908051906020019061004f929190610062565b5034801561005c57600080fd5b50610107565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106100a357805160ff19168380011785556100d1565b828001600101855582156100d1579182015b828111156100d05782518255916020019190600101906100b5565b5b5090506100de91906100e2565b5090565b61010491905b808211156101005760008160009055506001016100e8565b5090565b90565b610186806101166000396000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c8063b627cf3b14610030575b600080fd5b6100386100b3565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561007857808201518184015260208101905061005d565b50505050905090810190601f1680156100a55780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b60008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156101495780601f1061011e57610100808354040283529160200191610149565b820191906000526020600020905b81548152906001019060200180831161012c57829003601f168201915b50505050508156fea265627a7a72315820ce22413b8fb5356bd505d20efc38050bdc05a87d0201c48e2b6aff15ca3485b764736f6c634300050c0032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061002b5760003560e01c8063b627cf3b14610030575b600080fd5b6100386100b3565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561007857808201518184015260208101905061005d565b50505050905090810190601f1680156100a55780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b60008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156101495780601f1061011e57610100808354040283529160200191610149565b820191906000526020600020905b81548152906001019060200180831161012c57829003601f168201915b50505050508156fea265627a7a72315820ce22413b8fb5356bd505d20efc38050bdc05a87d0201c48e2b6aff15ca3485b764736f6c634300050c0032",
+  "sourceMap": "26:66:0:-;;;51:38;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;26:66;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:66:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;",
+  "deployedSourceMap": "26:66:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:66:0;;;;;;;;;;;;;;;;;;;51:38;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;51:38:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.5.11;\n\ncontract HelloWorld{\n    string public welcome = \"hello World!\";\n}",
+  "sourcePath": "/Users/giannibhoendie/Documents/GitHub/BC1_Gianni/Day_07_Mon_9_12_2019/contracts/HelloWorld.sol",
+  "ast": {
+    "absolutePath": "/Users/giannibhoendie/Documents/GitHub/BC1_Gianni/Day_07_Mon_9_12_2019/contracts/HelloWorld.sol",
+    "exportedSymbols": {
+      "HelloWorld": [
+        5
+      ]
+    },
+    "id": 6,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".11"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 5,
+        "linearizedBaseContracts": [
+          5
+        ],
+        "name": "HelloWorld",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 4,
+            "name": "welcome",
+            "nodeType": "VariableDeclaration",
+            "scope": 5,
+            "src": "51:38:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_string_storage",
+              "typeString": "string"
+            },
+            "typeName": {
+              "id": 2,
+              "name": "string",
+              "nodeType": "ElementaryTypeName",
+              "src": "51:6:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_string_storage_ptr",
+                "typeString": "string"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "68656c6c6f20576f726c6421",
+              "id": 3,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "string",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "75:14:0",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_stringliteral_1c70de0047d33acdf708ada4ec4a761f0927d5a51342fd8868ae6884589a7029",
+                "typeString": "literal_string \"hello World!\""
+              },
+              "value": "hello World!"
+            },
+            "visibility": "public"
+          }
+        ],
+        "scope": 6,
+        "src": "26:66:0"
+      }
+    ],
+    "src": "0:92:0"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/giannibhoendie/Documents/GitHub/BC1_Gianni/Day_07_Mon_9_12_2019/contracts/HelloWorld.sol",
+    "exportedSymbols": {
+      "HelloWorld": [
+        5
+      ]
+    },
+    "id": 6,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".11"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 5,
+        "linearizedBaseContracts": [
+          5
+        ],
+        "name": "HelloWorld",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 4,
+            "name": "welcome",
+            "nodeType": "VariableDeclaration",
+            "scope": 5,
+            "src": "51:38:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_string_storage",
+              "typeString": "string"
+            },
+            "typeName": {
+              "id": 2,
+              "name": "string",
+              "nodeType": "ElementaryTypeName",
+              "src": "51:6:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_string_storage_ptr",
+                "typeString": "string"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "68656c6c6f20576f726c6421",
+              "id": 3,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "string",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "75:14:0",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_stringliteral_1c70de0047d33acdf708ada4ec4a761f0927d5a51342fd8868ae6884589a7029",
+                "typeString": "literal_string \"hello World!\""
+              },
+              "value": "hello World!"
+            },
+            "visibility": "public"
+          }
+        ],
+        "scope": 6,
+        "src": "26:66:0"
+      }
+    ],
+    "src": "0:92:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.12+commit.7709ece9.Emscripten.clang"
+  },
+  "networks": {
+    "1": {
+      "events": {},
+      "links": {},
+      "address": "0x9F11a919240E7b6206E046F9359756A1dC386121",
+      "transactionHash": "0xfa43ed78d5e5e743b4f0b504aa6339ba03906e812e396f4d641356c4da16b983"
+    },
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x3C30a97A49EA505413cb9759fD55d297314ffc17",
+      "transactionHash": "0x7a9a6c3134afb17bc5c65abf6efd466a92c56de153ec93d3dde6e749899347a6"
+    }
+  },
+  "schemaVersion": "3.0.19",
+  "updatedAt": "2019-12-17T22:56:31.242Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
