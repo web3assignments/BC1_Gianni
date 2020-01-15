@@ -20,7 +20,6 @@
 
 async function addHash() {
     var strAdd = document.getElementById("Hashadd").value;
-    const Buffer = window.buffer.Buffer;
     const ipfs = window.IpfsHttpClient({host: 'local host', port: 5001});         
     const bufDataToHash = Buffer.from(strAdd);
     log(`Adding ${strAdd} to local ipfs`);
