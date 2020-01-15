@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/ipfs-http-client/dist/index.js"></script> 
+    </head>
+    <body>
+        <h1>add hash to IPFS and retrieve hash from IPFS</h1>
+        <div class="buttonHolder">
+            Add: <input type="text" id="Hashadd" value="add your file">
+            <input type= "button" class="button" value="Add hash" onclick="addHash();"><br>
+            Retrieve hash: <input type="text" id="retrieve">
+            <input type= "button" class="button" value="Retrieve hash" onclick="retrieveHash();"><br>
+        </div>
+        <pre id="log"></pre>
+        
+        <script>
+        function log(logstr) {   
+    document.getElementById("log").innerHTML +=logstr+"\n";
+}
+
+async function addHash() {
+    var strAdd = document.getElementById("Hashadd").value;
+    const Buffer = window.buffer.Buffer;
+    const ipfs = window.IpfsHttpClient({host: 'local host', port: 5001});         
+    const bufDataToHash = Buffer.from(strAdd);
+    log(`Adding ${strAdd} to local ipfs`);
+    const hash = await ipfs.add(bufDataToHash).catch(console.log); 
+    log(`Hash ${hash[0].hash}`);
+}
+
+async function retrieveHash() {
+    var hash = document.getElementById("retrieve").value;
+    const ipfs = window.IpfsHttpClient({host: 'local host', port: 5001});         
+    log(`Checking hash ${hash}`)
+    const file = await ipfs.cat(hash).catch(x=> log(`Error ${x}`));
+    if (file)
+        log(file.toString('utf8'));
+}
+        </script>           
+    </body>
+</html>
