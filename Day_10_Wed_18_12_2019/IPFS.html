@@ -21,7 +21,7 @@
 
 async function addHash() {
     var strAdd = document.getElementById("Hashadd").value;
-    const ipfs = window.IpfsHttpClient({host: 'local host', port: 5001});         
+    const ipfs = window.IpfsHttpClient({host: '127.0.0.1', port: 5001});         
     const bufDataToHash = Buffer.from(strAdd);
     log(`Adding ${strAdd} to local ipfs`);
     const hash = await ipfs.add(bufDataToHash).catch(console.log); 
@@ -30,7 +30,7 @@ async function addHash() {
 
 async function retrieveHash() {
     var hash = document.getElementById("retrieve").value;
-    const ipfs = window.IpfsHttpClient({host: 'local host', port: 5001});         
+    const ipfs = window.IpfsHttpClient({host: '127.0.0.1', port: 5001});         
     log(`Checking hash ${hash}`)
     const file = await ipfs.cat(hash).catch(x=> log(`Error ${x}`));
     if (file)
