@@ -7,8 +7,9 @@
     <body>
         <h1>add hash to IPFS and retrieve hash from IPFS</h1>
         <div class="buttonHolder">
-            Add: <input type="text" id="Hashadd" value="adding this in to a hash">
+            Add: <input type="text" id="Hashadd" value="adding a hash">
             <input type= "button" class="button" value="Add hash" onclick="addHash();"><br>
+            Adding a hash can take a while <br>
             Retrieve hash: <input type="text" id="retrieve">
             <input type= "button" class="button" value="Retrieve hash" onclick="retrieveHash();"><br>
         </div>
@@ -21,16 +22,16 @@
 
 async function addHash() {
     var strAdd = document.getElementById("Hashadd").value;
-    const ipfs = window.IpfsHttpClient('http://127.0.0.1:5001');         
+    const ipfs = window.IpfsHttpClient('https://ipfs.infura.io:5001');         
     const bufDataToHash = Buffer.from(strAdd);
-    log(`Adding ${strAdd} to local ipfs`);
+    log(`Adding ${strAdd} to ipfs`);
     const hash = await ipfs.add(bufDataToHash).catch(console.log); 
     log(`Hash ${hash[0].hash}`);
 }
 
 async function retrieveHash() {
     var hash = document.getElementById("retrieve").value;
-    const ipfs = window.IpfsHttpClient('http://127.0.0.1:5001');         
+    const ipfs = window.IpfsHttpClient('https://ipfs.infura.io:5001');         
     log(`Checking hash ${hash}`)
     const file = await ipfs.cat(hash).catch(x=> log(`Error ${x}`));
     if (file)
