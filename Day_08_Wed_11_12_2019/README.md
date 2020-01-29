@@ -1,2 +1,5 @@
 ### Day_08_Wed_11_12_2019 
-Place the assignments in this subdirectory   
+
+I choose for the proxy pattern, because it is very usable in my contract.
+my contract is a contract that can evolve in every way so it could get many upgrades over time.
+
