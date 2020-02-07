@@ -1,2 +1,4 @@
 ### Day_15_Wed_22_1_2020 
-Place the assignments in this subdirectory   
+
+
+https://web3assignments.github.io/BC1_Gianni/Day_15_Wed_22_1_2020/Index.html
