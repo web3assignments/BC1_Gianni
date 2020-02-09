@@ -1,206 +1,7 @@
 function log(logstr) {
 	document.getElementById("log").innerHTML +=logstr+"\n";
 }
-const ContractABI = [
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "amountOfDonator",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "people",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "amountOfDonations",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_id",
-				"type": "address"
-			}
-		],
-		"name": "registrationStatus",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "contractBalance",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "donator",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "removeDonator",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "donate",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": true,
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "addDonator",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": true,
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "newPerson",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "losePerson",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "donated",
-		"type": "event"
-	}
-];
+const abi = [{"constant":true,"inputs":[],"name":"amountOfDonator","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"people","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"amountOfDonations","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"_id","type":"address"}],"name":"registrationStatus","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"contractBalance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"donator","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"removeDonator","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"donate","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"addDonator","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":true,"stateMutability":"payable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"","type":"address"}],"name":"newPerson","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"","type":"address"}],"name":"losePerson","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"","type":"address"}],"name":"donated","type":"event"}];
 
 async function f() {                     
 	const web3Connect = new Web3Connect.Core({
@@ -222,10 +23,10 @@ async function OnConnect(provider) {
 }
 f();
 
-    const ContractAddress = "0x16935a8175A01Ff4d50cf90Aa3AF212B8fe9485B";
-    const ContractDonator = new Web3.eth.Contract(ContractABI, ContractAddress);
+    const ContractAddress = '0x16935a8175A01Ff4d50cf90Aa3AF212B8fe9485B';
+    const contract = new web3.eth.Contract(abi, ContractAddress);
     async function addDonator() {
-    	var result = await ContractDonator.methods.addDonator().send({from: `${userAddress}`});
+    	var result = await contract.methods.addDonator().send({from: `${userAddress}`});
     	if (result) {
        			 log(`You're on the donator list now!'`);
     		} else {
@@ -234,7 +35,7 @@ f();
 		}
 
 		async function removeDonator() {
-			var result = await ContractDonator.methods.removeDonator().send({from: `${userAddress}`});
+			var result = await contract.methods.removeDonator().send({from: `${userAddress}`});
 			if (result) {
 						log(`You have been removed from the donator list'`);
 				} else {
@@ -243,17 +44,17 @@ f();
 			}
 
 			async function amountDonators() {
-				var result = await ContractDonator.methods.amountOfDonator().call(`${userAddress}`);
+				var result = await contract.methods.amountOfDonator().call(`${userAddress}`);
 				log('There are ${result} donators');
 				}
 			
 			async function registrationStatus() {
-				var result = await ContractDonator.methods.registrationStatus().call(`${userAddress}`);
+				var result = await contract.methods.registrationStatus().call(`${userAddress}`);
 				log('You are registered');
 				}
 			
 			async function Donate() {
-				var result = await ContractDonator.methods.donate().send({from: `${userAddress}`});
+				var result = await contract.methods.donate().send({from: `${userAddress}`});
 			    	if (result) {
 						log(`You have donated!`);
 						} else {
@@ -262,7 +63,7 @@ f();
 				}
 
 			async function contractBalance() {
-				var result = await ContractDonator.methods.contractBalance().call();
+				var result = await contract.methods.contractBalance().call();
 				log('This contract has ${result} eth.');
 				}
 			
