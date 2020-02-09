@@ -1,14 +1,6 @@
 function log(logstr) {
 	document.getElementById("log").innerHTML +=logstr+"\n";
 }
-web3 = new Web3(Provider);     
-web3.extend({ // web3.eth.requestAccounts() isn't available (yet)
-    methods: [{
-        name: 'eth_requestAccounts',
-        call: 'eth_requestAccounts',
-        params: 0
-    }]
-}); 
 
 const ContractABI = [
 	{
