@@ -244,12 +244,12 @@ f();
 			}
 
 			async function amountDonators() {
-				var result = await ContractDonator.methods.amountOfDonator().call();
+				var result = await ContractDonator.methods.amountOfDonator().call(`${userAddress}`);
 				log('There are ${result} donators');
 				}
 			
 			async function registrationStatus() {
-				var result = await ContractDonator.methods.registrationStatus().call();
+				var result = await ContractDonator.methods.registrationStatus().call(`${userAddress}`);
 				log('You are registered');
 				}
 			
@@ -263,7 +263,7 @@ f();
 				}
 
 			async function contractBalance() {
-				var result = await ContractDonator.methods.contractBalance().call();
+				var result = await ContractDonator.methods.contractBalance().call(`${userAddress}`);
 				log('This contract has ${result} eth.');
 				}
 			
