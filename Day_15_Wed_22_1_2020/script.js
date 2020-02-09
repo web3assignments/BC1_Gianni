@@ -8,7 +8,7 @@ const ContractABI = [{"constant":true,"inputs":[],"name":"amountOfDonator","outp
 	const ContractDonator = new web3.eth.Contract(ContractABI, ContractAddress);
 	
     async function addDonator() {
-    	var result = ContractDonator.methods.addDonator().send({from: `${userAddress}`});
+    	var result = await ContractDonator.methods.addDonator().send({from: `${userAddress}`});
     	if (result) {
        			 log(`You're on the donator list now!'`);
     		} else {
@@ -17,7 +17,7 @@ const ContractABI = [{"constant":true,"inputs":[],"name":"amountOfDonator","outp
 		}
 
 		async function removeDonator() {
-			var result = ContractDonator.methods.removeDonator().send({from: `${userAddress}`});
+			var result = await ContractDonator.methods.removeDonator().send({from: `${userAddress}`});
 			if (result) {
 						log(`You have been removed from the donator list'`);
 				} else {
