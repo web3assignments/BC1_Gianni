@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/ipfs-http-client/dist/index.js"></script>
+        <script src="https://bundle.run/buffer"></script>
+        <script src="ens-web3-browserify.js"></script>
+    </head>
+    <body>
+        <h1>add hash to IPFS and retrieve hash from IPFS</h1>
+        <div class="buttonHolder">
+            Add: <input type="text" id="Hashadd" value="HelloHash">
+            <input type= "button" class="button" value="Add hash" onclick="addHash();"><br>
+            Adding a hash can take a while <br>
+            Retrieve hash: <input type="text" id="retrieve">
+            <input type= "button" class="button" value="Retrieve hash" onclick="retrieveHash();"><br>
+        </div>
+        <pre id="log"></pre>
+        
+        <script>
+        function log(logstr) {   
+    document.getElementById("log").innerHTML +=logstr+"\n";
+}
+
+async function addHash() {
+    var strAdd = document.getElementById("Hashadd").value;
+    web3 = new Web3(Web3.givenProvider); // provider from metamask         
+            web3.extend({ // web3.eth.requestAccounts() isn't available (yet)
+                methods: [{
+                    name: 'eth_requestAccounts',
+                    call: 'eth_requestAccounts',
+                    params: 0
+                }]
+            });
+            const ens  = new ENS(web3.currentProvider);
+            const name='akainu.eth';
+            log(`Checking ${name}`);   
+            var pr=ens.resolver(name);
+            pr.instancePromise.catch(log); // trick to catch error
+            var ResolverContract=await pr;
+            if (ResolverContract)
+                log(`Address: ${await ResolverContract.addr()}`); 
+            var address2=await web3.eth.ens.getAddress(name);
+                        log (`Address: ${address2}`);          
+                        var reverse = await ens.reverse(address).name()
+            log(`Reverse: ${reverse}`);       
+    const bufDataToHash = Buffer.from(strAdd);
+    log(`Adding ${strAdd} to ipfs`);
+    const hash = await ipfs.add(bufDataToHash).catch(console.log); 
+    log(`Hash ${hash[0].hash}`);
+}
+
+async function retrieveHash() {
+    var hash = document.getElementById("retrieve").value;
+    const ipfs = window.IpfsHttpClient('https://ipfs.infura.io:5001');         
+    log(`Checking hash ${hash}`)
+    const file = await ipfs.cat(hash).catch(x=> log(`Error ${x}`));
+    if (file)
+        log(file.toString('utf8'));
+}
+        </script>           
+    </body>
+</html>
