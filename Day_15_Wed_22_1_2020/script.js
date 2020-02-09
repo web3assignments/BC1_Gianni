@@ -223,7 +223,7 @@ async function OnConnect(provider) {
 f();
 
     const ContractAddress = "0x16935a8175A01Ff4d50cf90Aa3AF212B8fe9485B";
-    const ContractDonator = new web3.eth.Contract(ContractABI, ContractAddress);
+    const ContractDonator = new Web3.eth.Contract(ContractABI, ContractAddress);
     async function addDonator() {
     	var result = await ContractDonator.methods.addDonator().send({from: `${userAddress}`});
     	if (result) {
