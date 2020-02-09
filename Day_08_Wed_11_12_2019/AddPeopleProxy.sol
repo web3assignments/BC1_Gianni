@@ -1,9 +1,14 @@
-pragma solidity 0.5.11;
+pragma solidity 0.6.1;
 
 contract PeopleAdd {
 
+    address public transferOwner;
     address public currentVersion;
     address owner = msg.sender;
+    event logOwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+     modifier onlyOwner() {
+         require ((msg.sender == owner), "Only the owner can modify");
+         }
     event newPersoon(
         address indexed linkPersoon
     );
@@ -15,14 +20,24 @@ contract PeopleAdd {
         string _firstName;
         string _lastName;
     }
+    function Owned() public {
+        owner = msg.sender;
+        }
+        function transferOwnership(address newOwner) public onlyOwner {
+            require(newOwner != address(0), "New owner is [{newOwner}]");
+            LogOwnershipTransferred(owner, newOwner);
+            owner = newOwner;
+            }
+
     function upgradeVersion(address newVersion) public {
         require(msg.sender == owner, "Only owner can upgrade");
         currentVersion = newVersion;
     }
-    function() external payable{
+    function viewVersion() external payable{
            address implementation = currentVersion;
            assembly {
-               calldatacopy(0x0, 0x0, calldatasize)
+               let _target := sload(0)
+               calldatacopy(0x0, 0x0, calldatasize())
                let result := delegatecall(gas, implementation, 0x0, calldatasize, 0x0, 0)
                returndatacopy(0x0, 0x0, returndatasize)
                switch result case 0 {revert(0,0)} default {return (0, returndatasize)}
