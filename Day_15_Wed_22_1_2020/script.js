@@ -1,7 +1,6 @@
 function log(logstr) {
 	document.getElementById("log").innerHTML +=logstr+"\n";
 }
-
 const ContractABI = [
 	{
 		"constant": true,
@@ -228,9 +227,9 @@ f();
     async function addDonator() {
     	var result = await ContractDonator.methods.addDonator().send({from: `${userAddress}`});
     	if (result) {
-       			 log(`You're an donator now!'`);
+       			 log(`You're on the donator list now!'`);
     		} else {
-       			 log(`please try again`);
+       			 log(`please try again to join the list`);
     		}
 		}
 
@@ -239,7 +238,7 @@ f();
 			if (result) {
 						log(`You have been removed from the donator list'`);
 				} else {
-						log(`please try again`);
+						log(`please try again to leave the list`);
 				}
 			}
 
