@@ -218,23 +218,14 @@ async function f() {
 }        
 async function OnConnect(provider) {
 	const web3 = new Web3(provider); // add provider to web3
-	var acts=await web3.eth.getAccounts().catch(log);
-	log(`Here are the accounts: ${JSON.stringify(acts)}`);
+	var userAddress=await web3.eth.getAccounts().catch(log);
+	log(`Here are the accounts: ${JSON.stringify(userAddress)}`);
 }
 f();
 
     const ContractAddress = "0x2c5749ec175F9b9E3106B22982291c779AB294b5";
     const ContractDonator = new web3.eth.Contract(ContractABI, ContractAddress);
     async function addDonator() {
-		Web3 = new Web3(Web3.givenProvider);
-		web3.extend({ // web3.eth.requestAccounts() isn't available (yet)
-			methods: [{
-				name: 'eth_requestAccounts',
-				call: 'eth_requestAccounts',
-				params: 0
-			}]
-		}); 
-        var userAddress = await web3.eth_requestAccounts().catch(x=>log(x.message));
     	var result = await ContractDonator.methods.addDonator().send({from: `${userAddress}`});
     	if (result) {
        			 log(`You're an donator now!'`);
@@ -244,15 +235,6 @@ f();
 		}
 
 		async function removeDonator() {
-			Web3 = new Web3(Web3.givenProvider);
-			web3.extend({ // web3.eth.requestAccounts() isn't available (yet)
-				methods: [{
-					name: 'eth_requestAccounts',
-					call: 'eth_requestAccounts',
-					params: 0
-				}]
-			}); 
-			var userAddress = await web3.eth_requestAccounts().catch(x=>log(x.message));
 			var result = await ContractDonator.methods.removeDonator().send({from: `${userAddress}`});
 			if (result) {
 						log(`You have been removed from the donator list'`);
@@ -262,27 +244,16 @@ f();
 			}
 
 			async function amountDonators() {
-				Web3 = new Web3(Web3.givenProvider);
 				var result = await ContractDonator.methods.amountOfDonator().call();
 				log('There are ${result} donators');
 				}
 			
 			async function registrationStatus() {
-				Web3 = new Web3(Web3.givenProvider);
 				var result = await ContractDonator.methods.registrationStatus().call();
 				log('You are registered');
 				}
 			
 			async function Donate() {
-				Web3 = new Web3(Web3.givenProvider);
-				web3.extend({ // web3.eth.requestAccounts() isn't available (yet)
-					methods: [{
-						name: 'eth_requestAccounts',
-						call: 'eth_requestAccounts',
-						params: 0
-					}]
-				}); 
-				var userAddress = await web3.eth_requestAccounts().catch(x=>log(x.message));
 				var result = await ContractDonator.methods.donate().send({from: `${userAddress}`});
 			    	if (result) {
 						log(`You have donated!`);
@@ -292,30 +263,7 @@ f();
 				}
 
 			async function contractBalance() {
-				Web3 = new Web3(Web3.givenProvider);
 				var result = await ContractDonator.methods.contractBalance().call();
 				log('This contract has ${result} eth.');
 				}
-
-				async function web3connection() {
-					const web3Connect = new Web3Connect.Core({
-						network: "mainnet",
-						providerOptions: {
-							walletconnect: {
-								package: WalletConnectProvider,
-									options: { infuraId: "0" }
-							}
-						}
-					});
-					web3Connect.toggleModal();
-					web3Connect.on("connect", OnConnect);
-				}
-				
-				async function OnConnect(provider) {
-					const web3 = new Web3(provider);
-					var acts=await web3.eth.getAccounts().catch(log);
-					log(`Here are the accounts: ${JSON.stringify(acts)}`);
-				}
-				
-				web3connection();
 			
