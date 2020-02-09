@@ -245,9 +245,9 @@ f();
     async function addDonator() {
     	var result = await ContractDonator.methods.addDonator().send({from: `${userAddress}`});
     	if (result) {
-       			 log(`You're an donator now!'`);
+       			 log(`You're on the donator list now!'`);
     		} else {
-       			 log(`please try again`);
+       			 log(`please try again to join the donator list`);
     		}
 		}
 
@@ -256,17 +256,17 @@ f();
 			if (result) {
 						log(`You have been removed from the donator list'`);
 				} else {
-						log(`please try again`);
+						log(`please try again to leave the donator list`);
 				}
 			}
 
 			async function amountDonators() {
-				var result = await ContractDonator.methods.amountOfDonator().call(`${userAddress}`);
+				var result = await ContractDonator.methods.amountOfDonator().call();
 				log('There are ${result} donators');
 				}
 			
 			async function registrationStatus() {
-				var result = await ContractDonator.methods.registrationStatus().call(`${userAddress}`);
+				var result = await ContractDonator.methods.registrationStatus().call();
 				log('You are registered');
 				}
 			
