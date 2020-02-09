@@ -2,15 +2,6 @@ function log(logstr) {
 	document.getElementById("log").innerHTML +=logstr+"\n";
 }
 
-Web3 = new Web3(Web3.givenProvider);
-web3.extend({ // web3.eth.requestAccounts() isn't available (yet)
-	methods: [{
-		name: 'eth_requestAccounts',
-		call: 'eth_requestAccounts',
-		params: 0
-	}]
-}); 
-
 const ContractABI = [
 	{
 		"constant": true,
@@ -212,29 +203,28 @@ const ContractABI = [
 	}
 ];
 
+async function f() {                     
+	const web3Connect = new Web3Connect.Core({
+		network: "mainnet", // optional
+		providerOptions: {
+			walletconnect: {
+				package: WalletConnectProvider,
+					options: { infuraId: "0" } // dummy infura code!!
+			}
+		}
+	});
+	web3Connect.toggleModal();
+	web3Connect.on("connect", OnConnect);
+}        
+async function OnConnect(provider) {
+	const web3 = new Web3(provider); // add provider to web3
+	var acts=await web3.eth.getAccounts().catch(log);
+	log(`Here are the accounts: ${JSON.stringify(acts)}`);
+}
+f();
+
     const ContractAddress = "0x2c5749ec175F9b9E3106B22982291c779AB294b5";
     const ContractDonator = new web3.eth.Contract(ContractABI, ContractAddress);
-	
-	async function f() {                     
-		const web3Connect = new Web3Connect.Core({
-			network: "mainnet", // optional
-			providerOptions: {
-				walletconnect: {
-					package: WalletConnectProvider,
-						options: { infuraId: "0" } // dummy infura code!!
-				}
-			}
-		});
-		web3Connect.toggleModal();
-		web3Connect.on("connect", OnConnect);
-	}        
-	async function OnConnect(provider) {
-		const web3 = new Web3(provider); // add provider to web3
-		var acts=await web3.eth.getAccounts().catch(log);
-		log(`Here are the accounts: ${JSON.stringify(acts)}`);
-	}
-	f();
-
     async function addDonator() {
 		Web3 = new Web3(Web3.givenProvider);
 		web3.extend({ // web3.eth.requestAccounts() isn't available (yet)
