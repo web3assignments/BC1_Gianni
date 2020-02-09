@@ -3,8 +3,8 @@
 Browser: Chrome
 Metamask: Ropsten
 
-http://hashcontract.akainu.eth
+http://akainu.eth/
 
 Zal door verwijzen naar de onderstaande website
 
-https://gateway.ipfs.io/ipfs/QmNjigfskN29647VGRRJA999SKYeadYhJAJZDqWcmNfMky
+https://gateway.ipfs.io/ipfs/QmPe4EC9EptFMffhzoK52md7Uo7AE9So8ZwTEvT9nqWG1E
