@@ -26,6 +26,7 @@ f();
     const ContractAddress = '0x16935a8175A01Ff4d50cf90Aa3AF212B8fe9485B';
 	
 		async function addDonator() {
+			const userAddress=await web3.eth.getAccounts().catch(log);
 			var result = await ContractDonator.methods.addDonator().send({from: `${userAddress}`});
 			if (result) {
 					log(`You're on the donator list now!'`);
@@ -35,6 +36,7 @@ f();
 			}
 
 		async function removeDonator() {
+			const userAddress=await web3.eth.getAccounts().catch(log);
 			var result = await ContractDonator.methods.removeDonator().send({from: `${userAddress}`});
 			if (result) {
 						log(`You have been removed from the donator list'`);
@@ -43,7 +45,7 @@ f();
 				}
 			}
 
-			async function amountDonators() {
+			async function amountOfDonators() {
 				var result = await ContractDonator.methods.amountOfDonator().call();
 				log('There are ${result} donators');
 				}
@@ -54,6 +56,7 @@ f();
 				}
 			
 			async function Donate() {
+				const userAddress=await web3.eth.getAccounts().catch(log);
 				var result = await ContractDonator.methods.donate().send({from: `${userAddress}`});
 			    	if (result) {
 						log(`You have donated!`);
