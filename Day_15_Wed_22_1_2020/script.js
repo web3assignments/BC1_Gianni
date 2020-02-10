@@ -17,7 +17,7 @@ async function f() {
 async function OnConnect(provider) {
 	const web3 = new Web3(provider); // add provider to web3
 	ContractDonator = new web3.eth.Contract(ContractABI, ContractAddress);
-	var userAddress=await web3.eth.getAccounts().catch(log);
+	const userAddress=await web3.eth.getAccounts().catch(log);
 	log(`Here are the accounts: ${JSON.stringify(userAddress)}`);
 }
 f();
