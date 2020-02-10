@@ -26,7 +26,8 @@ f();
     const ContractAddress = '0x16935a8175A01Ff4d50cf90Aa3AF212B8fe9485B';
 	
 		async function addDonator() {
-			const userAddress=await web3.eth.getAccounts().catch(log);
+			const web3 = new Web3(provider);
+			var userAddress=await web3.eth.getAccounts().catch(log);
 			var result = await ContractDonator.methods.addDonator().send({from: `${userAddress}`});
 			if (result) {
 					log(`You're on the donator list now!'`);
@@ -66,7 +67,8 @@ f();
 				}
 
 			async function contractBalance() {
-				var result = await ContractDonator.methods.contractBalance().call();
+				const web3 = new Web3(provider);
+				var result = await ContractDonator.methods.contractBalance('0x16935a8175A01Ff4d50cf90Aa3AF212B8fe9485B').call();
 				log('This contract has ${result} eth.');
 				}
 			
